@@ -49,7 +49,7 @@ public:
 		std::swap(arr[pos0], arr[pos1]);
 	}
 
-	void insert(T* elem, int pos = 0) {
+	void pushback(T* elem) {
 		if (pos < 0) {
 			throw std::invalid_argument("In List::insert : pos argument is negative.");
 		}
@@ -118,9 +118,7 @@ public:
 		return -1;
 	}
 
-	void push_back(T* elem) {
-		insert(elem, size);
-	}
+
 	void pop_back() {
 		pop(size);
 	}
