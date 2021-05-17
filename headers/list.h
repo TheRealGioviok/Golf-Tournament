@@ -31,6 +31,7 @@ public:
 	List(int _maxSize = 1, int _bucketSize = 10, bool suppressWarning = false) :maxSize(_maxSize), bucketSize(_bucketSize) {
 		if (!suppressWarning && _bucketSize == 0) std::cout << "WARNING: List's bucket size was set to 0. The List is immutable (List object at " << this << " )" << std::endl;
 		arr = new T[_maxSize];
+		size = 0;
 	};
 
 	void swap(int pos0, int pos1) {
@@ -49,13 +50,7 @@ public:
 		std::swap(arr[pos0], arr[pos1]);
 	}
 
-	void pushback(T* elem) {
-		if (pos < 0) {
-			throw std::invalid_argument("In List::insert : pos argument is negative.");
-		}
-		if (pos > size) {
-			throw std::out_of_range("In List::insert : list index out of range.");
-		}
+	void push_back(T* elem) {
 		if (bucketSize == 0) {
 			throw immutableException();
 		}
@@ -122,10 +117,8 @@ public:
 	void pop_back() {
 		pop(size);
 	}
-	void insert(T elem, int pos) {
-		insert(new T(elem), pos);
-	}
+
 	void push_back(T elem) {
-		insert(new T(elem), size);
+		push_back(new T(elem));
 	}
 };
