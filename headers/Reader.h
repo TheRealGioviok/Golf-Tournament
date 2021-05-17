@@ -2,12 +2,13 @@
 #include <fstream>
 #include "types.h"
 #include "list.h"
+#include "GolfList.h"
 #include <string>
 #include <iostream>
 namespace golf {
 	class Reader {
 	public:
-		static void populateList(List<Data>* l, std::string filename) {
+		static void populateList(GolfList* l, std::string filename) {
 			std::ifstream file;
 			file.open(filename);
 			if (!file.is_open()) {
@@ -55,7 +56,7 @@ namespace golf {
 				d->birthYear = std::stoi(read);
 				
 				
-				l->push_back(d);
+				l->add(d);
 			}
 			file.close();
 		}
