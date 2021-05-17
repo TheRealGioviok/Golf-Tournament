@@ -14,40 +14,43 @@ namespace golf {
 				Data d;
 				
 				std::getline(file, read);
-				d.surname = read;
-				if (file.eof()) {
-					std::cout << "WARNING: Input file is malformed" << std::endl;
-					break;
+				
+				size_t _sur = read.find(';');
+				if (_sur == std::string::npos) {
+					std::cout << "Warning: Malformed line" << std::endl;
+					continue;
 				}
+				d.surname = read.substr(0,_sur);
+				read= read.substr(_sur+1,read.size()-_sur-1);
 
-				std::getline(file, read);
-				d.name = read;
-				if (file.eof()) {
-					std::cout << "WARNING: Input file is malformed" << std::endl;
-					break;
+
+				_sur = read.find(';');
+				if (_sur == std::string::npos) {
+					std::cout << "Warning: Malformed line" << std::endl;
+					continue;
 				}
-
-				std::getline(file, read);
-				d.club = read;
-				if (file.eof()) {
-					std::cout << "WARNING: Input file is malformed" << std::endl;
-					break;
+				d.name = read.substr(0, _sur);
+				read = read.substr(_sur + 1, read.size() - _sur - 1);
+				
+				_sur = read.find(';');
+				if (_sur == std::string::npos) {
+					std::cout << "Warning: Malformed line" << std::endl;
+					continue;
 				}
-
-				std::getline(file, read);
-				d.points = std::stod(read);
-				if (file.eof()) {
-					std::cout << "WARNING: Input file is malformed" << std::endl;
-					break;
+				d.club= read.substr(0, _sur);
+				read = read.substr(_sur + 1, read.size() - _sur - 1);
+				
+				_sur = read.find(';');
+				if (_sur == std::string::npos) {
+					std::cout << "Warning: Malformed line" << std::endl;
+					continue;
 				}
+				d.points = std::stod(read.substr(0, _sur));
+				read = read.substr(_sur + 1, read.size() - _sur - 1);
 
-				std::getline(file, read);
 				d.birthYear = std::stoi(read);
-				if (file.eof()) {
-					std::cout << "WARNING: Input file is malformed" << std::endl;
-					break;
-				}
-
+				
+				
 				l->push_back(d);
 			}
 			file.close();
