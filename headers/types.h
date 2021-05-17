@@ -1,13 +1,14 @@
-
+#pragma once
+#include <string>
 namespace golf {
 	struct Data {
-		std::string surname, name;
+		std::string surname, name, club;
 		double points;
 		int birthYear;
-		Data(const Data &d) :surname(d.surname), name(d.name), points(d.points), birthYear(d.birthYear) {};
-		Data(std::string _surname = "Smith", std::string _name = "John", double _points = 42.0, int _birthYear = 1971) :surname(_surname), name(_name), points(_points), birthYear(_birthYear) {};
-		bool operator ==(const Data &d) {
-			if (d.surname == surname && d.name == d.name && d.points == d.points && d.birthYear == birthYear) return true;
+		Data(const Data& d) :surname(d.surname), name(d.name), club(d.club), points(d.points), birthYear(d.birthYear) {};
+		Data(std::string _surname = "Smith", std::string _name = "John", std::string _club = "International Golf Club", double _points = 42.0, int _birthYear = 1971) :surname(_surname), name(_name),club(_club), points(_points), birthYear(_birthYear) {};
+		bool operator ==(const Data& d) {
+			if (d.surname == surname && d.name == name && d.club == club && d.points == points && d.birthYear == birthYear) return true;
 			return false;
 		}
 		bool samePersonAs(const Data& d) {
