@@ -6,12 +6,16 @@
 #include <iostream>
 namespace golf {
 	class Reader {
+	public:
 		static void populateList(List<Data>* l, std::string filename) {
 			std::ifstream file;
 			file.open(filename);
+			if (!file.is_open()) {
+				return;
+			}
 			std::string read;
 			while (!file.eof()) {
-				Data d;
+				Data *d=new Data();
 				
 				std::getline(file, read);
 				
@@ -20,7 +24,7 @@ namespace golf {
 					std::cout << "Warning: Malformed line" << std::endl;
 					continue;
 				}
-				d.surname = read.substr(0,_sur);
+				d->surname = read.substr(0,_sur);
 				read= read.substr(_sur+1,read.size()-_sur-1);
 
 
@@ -29,7 +33,7 @@ namespace golf {
 					std::cout << "Warning: Malformed line" << std::endl;
 					continue;
 				}
-				d.name = read.substr(0, _sur);
+				d->name = read.substr(0, _sur);
 				read = read.substr(_sur + 1, read.size() - _sur - 1);
 				
 				_sur = read.find(';');
@@ -37,7 +41,7 @@ namespace golf {
 					std::cout << "Warning: Malformed line" << std::endl;
 					continue;
 				}
-				d.club= read.substr(0, _sur);
+				d->club= read.substr(0, _sur);
 				read = read.substr(_sur + 1, read.size() - _sur - 1);
 				
 				_sur = read.find(';');
@@ -45,10 +49,10 @@ namespace golf {
 					std::cout << "Warning: Malformed line" << std::endl;
 					continue;
 				}
-				d.points = std::stod(read.substr(0, _sur));
+				d->points = std::stod(read.substr(0, _sur));
 				read = read.substr(_sur + 1, read.size() - _sur - 1);
 
-				d.birthYear = std::stoi(read);
+				d->birthYear = std::stoi(read);
 				
 				
 				l->push_back(d);
