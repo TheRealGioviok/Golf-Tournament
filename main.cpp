@@ -1,3 +1,11 @@
+#include <iostream>
+
+#include "list.h"
+#include "types.h"
+#include "Reader.h"
+#include "GolfList.h"
+#include <iostream>
+
 int main() {
 	List<int> list;
 	for (int i = 0; i < 10; i++) {
@@ -11,9 +19,21 @@ int main() {
 	golf::Data f = golf::Data("Stroustrup", "Bjarne","Danish Golf Club ", 100.0, 1950);
 	golf::Data f2 = golf::Data("Ritchie", "Dennis","US Golf Club", 100.0, 1941);
 
-	List<golf::Data> list3;
+	golf::GolfList list3;
 	golf::Reader::populateList(&list3,"test.txt");
-	for (int i = 0; i < list3.getSize(); i++) {
-		std::cout << list3[i] << std::endl;
-	}
+	std::cout << std::endl;
+	golf::GolfList::print(&list3, true);  //Crescente
+	std::cout << std::endl;
+	golf::GolfList::print(&list3, false); //Decrescente
+	std::cout << std::endl;
+
+	golf::GolfList::infoPlayerAndSame(&list3, "SARI");
+	std::cout << std::endl;
+
+	list3.removePlayersByPoints(150.0);
+	std::cout << std::endl;
+
+	golf::GolfList::print(&list3, true);  //Crescente
+	std::cout << std::endl;
+
 }
