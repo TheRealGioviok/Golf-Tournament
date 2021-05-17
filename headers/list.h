@@ -33,12 +33,28 @@ public:
 		arr = new T[_maxSize];
 	};
 
+	void swap(int pos0, int pos1) {
+		if (pos0 < 0) {
+			throw std::invalid_argument("In List::swap : pos0 argument is negative.");
+		}
+		if (pos0 > size) {
+			throw std::out_of_range("In List::swap : list index out of range.");
+		}
+		if (pos1 < 0) {
+			throw std::invalid_argument("In List::swap : pos1 argument is negative.");
+		}
+		if (pos1 > size) {
+			throw std::out_of_range("In List::swap : list index out of range.");
+		}
+		std::swap(arr[pos0], arr[pos1]);
+	}
+
 	void insert(T* elem, int pos = 0) {
 		if (pos < 0) {
 			throw std::invalid_argument("In List::insert : pos argument is negative.");
 		}
 		if (pos > size) {
-			throw std::out_of_range("In List::pos : list index out of range.");
+			throw std::out_of_range("In List::insert : list index out of range.");
 		}
 		if (bucketSize == 0) {
 			throw immutableException();
@@ -73,7 +89,7 @@ public:
 		size--;
 	}
 
-	int& operator[](int pos) {
+	T& operator[](int pos) {
 		if (pos < 0) {
 			throw std::invalid_argument("In List::[] : pos argument is negative.");
 		}
