@@ -11,10 +11,6 @@ namespace golf {
 			if (d.surname == surname && d.name == name && d.club == club && d.points == points && d.birthYear == birthYear) return true;
 			return false;
 		}
-		bool samePersonAs(const Data& d) {
-			if (d.surname == surname && d.name == d.name && d.birthYear == birthYear) return true;
-			return false;
-		}
 		friend std::ostream& operator<<(std::ostream& out, const Data& d) {
 			out << d.name +" "+ d.surname + " nato nel " + std::to_string(d.birthYear) + " appartiene al club :" + d.club + ". Al momento ha " + std::to_string(d.points) + " punti.";;
 			return out;
