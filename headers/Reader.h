@@ -23,6 +23,7 @@ namespace golf {
 				size_t _sur = read.find(';');
 				if (_sur == std::string::npos) {
 					std::cout << "Warning: Malformed line" << std::endl;
+					delete d;
 					continue;
 				}
 				d->surname = read.substr(0,_sur);
@@ -32,6 +33,7 @@ namespace golf {
 				_sur = read.find(';');
 				if (_sur == std::string::npos) {
 					std::cout << "Warning: Malformed line" << std::endl;
+					delete d;
 					continue;
 				}
 				d->name = read.substr(0, _sur);
@@ -40,6 +42,7 @@ namespace golf {
 				_sur = read.find(';');
 				if (_sur == std::string::npos) {
 					std::cout << "Warning: Malformed line" << std::endl;
+					delete d;
 					continue;
 				}
 				d->club= read.substr(0, _sur);
@@ -48,6 +51,7 @@ namespace golf {
 				_sur = read.find(';');
 				if (_sur == std::string::npos) {
 					std::cout << "Warning: Malformed line" << std::endl;
+					delete d;
 					continue;
 				}
 				d->points = std::stod(read.substr(0, _sur));
