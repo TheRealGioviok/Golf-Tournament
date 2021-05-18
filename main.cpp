@@ -20,7 +20,7 @@ int main() {
 	golf::Data f2 = golf::Data("Ritchie", "Dennis","US Golf Club", 100.0, 1941);
 
 	golf::GolfList list3;
-	golf::Reader::populateList(&list3,"test.txt");
+	golf::Reader::populateList(&list3,"testCase.txt");
 	std::cout << std::endl;
 	golf::GolfList::print(&list3, true);  //Crescente
 	std::cout << std::endl;
