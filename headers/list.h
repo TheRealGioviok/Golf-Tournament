@@ -24,9 +24,7 @@ public:
 	int getSize() {
 		return size;
 	}
-	int getMaxSize() {
-		return maxSize;
-	}
+
 
 	List(int _maxSize = 1, int _bucketSize = 10, bool suppressWarning = false) :maxSize(_maxSize), bucketSize(_bucketSize) {
 		if (!suppressWarning && _bucketSize == 0) std::cout << "WARNING: List's bucket size was set to 0. The List is immutable (List object at " << this << " )" << std::endl;
@@ -94,15 +92,6 @@ public:
 		return arr[pos];
 	}
 
-	/*int& operator[] const(int pos) {
-		if (pos < 0) {
-			throw std::invalid_argument("In List::[] : pos argument is negative.");
-		}
-		if (pos >= size) {
-			throw std::out_of_range("In List::[] : list index out of range.");
-		}
-		return arr[pos];
-	}*/
 
 	int find(T elem) {
 		for (int i = 0; i < size; i++) {
