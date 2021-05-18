@@ -63,6 +63,7 @@ namespace golf {
 				l->add(d);
 			}
 			file.close();
+			l->sort();
 		}
 	};
 }
